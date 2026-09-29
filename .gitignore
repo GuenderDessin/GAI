@@ -1,0 +1,26 @@
+# NetBeans private, machine-specific state
+/nbproject/private/
+
+# Compiled and packaged output
+/build/
+/dist/
+*.class
+
+# Local logs and temporary files
+*.log
+*.tmp
+*.bak
+
+# Local secrets and environment files
+.env
+.env.*
+!.env.example
+*.p12
+*.jks
+*.keystore
+
+# Operating-system and IDE noise
+.DS_Store
+Thumbs.db
+desktop.ini
+/.idea/
