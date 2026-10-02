@@ -70,4 +70,7 @@
     nbproject/build-impl.xml file. 
 
     -->
+    <target name="-post-jar">
+        <copy file="libs/webview-LICENSE.txt" todir="dist/lib"/>
+    </target>
 </project>

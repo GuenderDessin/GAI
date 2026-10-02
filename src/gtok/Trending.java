@@ -68,10 +68,19 @@ public class Trending {
      */
     public static String getTrendingFeed(String apiKey) throws Exception {
 
-        HttpClient client = HttpClient.newBuilder().build();
+        return getTrendingFeed(apiKey, "US");
+    }
+
+    public static String getTrendingFeed(String apiKey, String region) throws Exception {
+        if (region == null || !region.matches("[A-Z]{2}")) {
+            throw new IllegalArgumentException("Region must be a two-letter uppercase country code.");
+        }
+        HttpClient client = HttpClient.newBuilder()
+                .connectTimeout(java.time.Duration.ofSeconds(20)).build();
 
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(API_URL))
+                .uri(URI.create(API_URL + "?region=" + region))
+                .timeout(java.time.Duration.ofSeconds(60))
                 .header("x-api-key", apiKey)
                 .header("Accept", "application/json")
                 .GET()
